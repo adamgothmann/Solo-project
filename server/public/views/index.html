@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app='myApp'>
+  <head>
+    <meta charset="utf-8">
+    <title>Solo project</title>
+    <link rel="stylesheet" href="vendors/bootstrap.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="stylesheet.css" media="screen" title="no title" charset="utf-8">
+    <script src="/vendors/angular.js" charset="utf-8"></script>
+    <script src="/vendors/angular-route.min.js" charset="utf-8"></script>
+    <script src="/scripts/script.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <div ng-controller='playerController'>
+      <h1>it works</h1>
+      <ul class="nav nav-tabs" id="leftTab">
+        <li class="active"><a href="#qbLeft">QB</a></li>
+        <li class="active"><a href="#rbLeft">RB</a></li>
+        <li class="active"><a href="#wrLeft">WR</a></li>
+        <li class="active"><a href="#teLeft">TE</a></li>
+        <li class="active"><a href="#kLeft">K</a></li>
+        <li class="active"><a href="#defLeft">DEF</a></li>
+      </ul>
+      <ul class="nav nav-tabs" id="rightTab">
+        <li class="active"><a href="#qbRight">QB</a></li>
+        <li class="active"><a href="#rbRight">RB</a></li>
+        <li class="active"><a href="#wrRight">WR</a></li>
+        <li class="active"><a href="#teRight">TE</a></li>
+        <li class="active"><a href="#kRight">K</a></li>
+        <li class="active"><a href="#defRight">DEF</a></li>
+      </ul>
+      <div id="left" class="displays">
+          <table>
+            <tr ng-repeat='display in leftArray'>
+              <td>{{$index + 1}}.</td>
+              <td>{{display.name}}</td>
+              <td>{{display.position}}</td>
+              <td>{{display.team}}</td>
+            </tr>
+          </table>
+          <!-- <p>{{ $index + 1}}. {{show.name}} - {{show.position}}, {{show.team}}</p> -->
+      </div>
+
+      <div id="right" class="displays">
+        <table>
+          <tr ng-repeat='show in allPlayers' id="{{$index}}" class="rows">
+            <td>{{$index + 1}}.</td>
+            <td>{{show.name}}</td>
+            <td>{{show.position}}</td>
+            <td class="teamRight">{{show.team}}</td>
+            <td class="rightButton"><button class="btn btn-primary" type="button" name="addButton" ng-click="removePlayer(allPlayers, $index)">Add</button></td>
+        </table>
+      </div>
+      </div>
+    </div>
+  </body>
+</html>
