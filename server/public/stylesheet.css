@@ -5,7 +5,7 @@
   border-radius: 10px;
 }
 #left {
-  width: 500px;
+  width: 450px;
   float: left;
   margin-left: 50px;
 }
@@ -16,18 +16,43 @@
 }
 #rightTab{
   float: right;
-  margin-right: 170px;
+  margin-right: 55px;
 }
 #leftTab{
   float: left;
-  margin-left: 60px;
+  margin-left: 30px;
 }
 .rightButton{
   padding-left: 50px;
 }
-.teamRight{
+.position{
   padding-left: 20px;
+}
+.team{
+  padding-left: 20px;
+}
+.draft{
+  margin-left: 10px;
+}
+.remove{
+  margin-left: 10px;
 }
 .rows{
   padding-bottom: 10px;
+}
+td {
+  padding-left: 10px;
+}
+#bottom{
+  overflow: scroll;
+  border: solid;
+  height: 300px;
+  border-radius: 10px;
+}
+h3{
+  text-align: center;
+  margin-top: -4px;
+}
+h1{
+  text-align: center;
 }

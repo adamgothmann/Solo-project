@@ -1,0 +1,8 @@
+<table>
+  <tr ng-repeat='show in allPlayers' id="{{$index}}" class="rows">
+    <td>{{$index + 1}}.</td>
+    <td>{{show.name}}</td>
+    <td>{{show.position}}</td>
+    <td class="teamRight">{{show.team}}</td>
+    <td class="rightButton"><button class="btn btn-primary" type="button" name="addButton" ng-click="removePlayer(allPlayers, $index)">Add</button></td>
+</table>

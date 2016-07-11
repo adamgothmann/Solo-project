@@ -11,33 +11,20 @@
   </head>
   <body>
     <div ng-controller='playerController'>
-      <h1>it works</h1>
-      <ul class="nav nav-tabs" id="leftTab">
-        <li class="active"><a href="#qbLeft">QB</a></li>
-        <li class="active"><a href="#rbLeft">RB</a></li>
-        <li class="active"><a href="#wrLeft">WR</a></li>
-        <li class="active"><a href="#teLeft">TE</a></li>
-        <li class="active"><a href="#kLeft">K</a></li>
-        <li class="active"><a href="#defLeft">DEF</a></li>
-      </ul>
-      <ul class="nav nav-tabs" id="rightTab">
-        <li class="active"><a href="#qbRight">QB</a></li>
-        <li class="active"><a href="#rbRight">RB</a></li>
-        <li class="active"><a href="#wrRight">WR</a></li>
-        <li class="active"><a href="#teRight">TE</a></li>
-        <li class="active"><a href="#kRight">K</a></li>
-        <li class="active"><a href="#defRight">DEF</a></li>
-      </ul>
+      <h1>PROJECT</h1>
+      <div id="leftTab" ng-include="'/views/partials/leftNav.html'"></div>
+      <div id="rightTab" ng-include="'/views/partials/rightNav.html'"></div>
       <div id="left" class="displays">
-          <table>
-            <tr ng-repeat='display in leftArray'>
-              <td>{{$index + 1}}.</td>
-              <td>{{display.name}}</td>
-              <td>{{display.position}}</td>
-              <td>{{display.team}}</td>
-            </tr>
-          </table>
-          <!-- <p>{{ $index + 1}}. {{show.name}} - {{show.position}}, {{show.team}}</p> -->
+        <table>
+          <tr ng-repeat="display in leftArray track by $index" id="{{$index}}">
+            <td>{{$index + 1}}.</td>
+            <td>{{display[$index].name}}</td>
+            <td class="position">{{display[$index].position}}</td>
+            <td class="team">{{display[$index].team}}</td>
+            <td><button type="button" name="button" class="btn btn-success draft" ng-click="draftPlayer(leftArray, $index)">Draft</button></td>
+            <td><button type="button" name="button" class="btn btn-danger remove" ng-click="removePlayer(leftArray, $index)">Remove</button></td>
+          </tr>
+        </table>
       </div>
 
       <div id="right" class="displays">
@@ -45,11 +32,23 @@
           <tr ng-repeat='show in allPlayers' id="{{$index}}" class="rows">
             <td>{{$index + 1}}.</td>
             <td>{{show.name}}</td>
-            <td>{{show.position}}</td>
-            <td class="teamRight">{{show.team}}</td>
-            <td class="rightButton"><button class="btn btn-primary" type="button" name="addButton" ng-click="removePlayer(allPlayers, $index)">Add</button></td>
+            <td class="position">{{show.position}}</td>
+            <td class="team">{{show.team}}</td>
+            <td class="rightButton"><button class="btn btn-primary" type="button" name="addButton" ng-click="movePlayer(allPlayers, $index)">Add</button></td>
+          </tr>
         </table>
       </div>
+
+      <div id="bottom">
+        <h3>My team</h3>
+        <table>
+          <tr ng-repeat="something in myTeam track by $index" id="{{$index}}">
+            <td>{{$index + 1}}.</td>
+            <td>{{something[$index][$index].position}}</td>
+            <td>{{something[$index][$index].name}}</td>
+            <td>{{something[$index][$index].team}}</td>
+          </tr>
+        </table>
       </div>
     </div>
   </body>
