@@ -5,9 +5,12 @@
     <title>Solo project</title>
     <link rel="stylesheet" href="vendors/bootstrap.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="stylesheet.css" media="screen" title="no title" charset="utf-8">
+    <script src="/vendors/jquery.min.js" charset="utf-8"></script>
+    <script src="/vendors/jquery-ui.js" charset="utf-8"></script>
     <script src="/vendors/angular.js" charset="utf-8"></script>
     <script src="/vendors/angular-route.min.js" charset="utf-8"></script>
     <script src="/scripts/script.js" charset="utf-8"></script>
+    <script src="/vendors/sortable.js" charset="utf-8"></script>
   </head>
   <body>
     <div ng-controller='playerController'>
@@ -16,16 +19,16 @@
       <div id="rightTab" ng-include="'/views/partials/rightNav.html'"></div>
       <div id="left" class="displays">
         <table class="leftTable">
-          <!-- {{leftArray}}
-          {{leftArray.length}} -->
-          <tr ng-repeat="display in leftArray track by $index" id="{{$index}}">
-            <td>{{$index + 1}}.</td>
-            <td>{{display.name}}</td>
-            <td class="position">{{display.position}}</td>
-            <td class="team">{{display.team}}</td>
-            <td><button type="button" name="button" class="btn btn-success draft" ng-click="draftPlayer(leftArray, $index)">Draft</button></td>
-            <td><button type="button" name="button" class="btn btn-danger remove" ng-click="removePlayer(leftArray, $index)">Remove</button></td>
-          </tr>
+          <tbody ui-sortable="sortableOptions" ng-model="leftArray">
+            <tr ng-repeat="display in leftArray track by $index" id="{{$index}}">
+              <td>{{$index + 1}}.</td>
+              <td>{{display.name}}</td>
+              <td class="position">{{display.position}}</td>
+              <td class="team">{{display.team}}</td>
+              <td><button type="button" name="button" class="btn btn-success draft" ng-click="draftPlayer(leftArray, $index)">Draft</button></td>
+              <td><button type="button" name="button" class="btn btn-danger remove" ng-click="removePlayer(leftArray, $index)">Remove</button></td>
+            </tr>
+          </tbody>
         </table>
       </div>
 

@@ -1,4 +1,4 @@
-var myApp=angular.module( 'myApp', [] );
+var myApp=angular.module( 'myApp', ['ui.sortable'] );
 
 myApp.controller('playerController', ['$scope', '$http', function($scope, $http){
   $scope.leftArray=[];
