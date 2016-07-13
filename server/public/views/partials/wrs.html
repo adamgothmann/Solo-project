@@ -1,0 +1,12 @@
+<table class="leftTable">
+  <tbody ui-sortable="sortableOptions" ng-model="allWrs">
+    <tr ng-repeat="display in allWrs track by $index" id="{{$index}}">
+      <td>{{$index + 1}}.</td>
+      <td>{{display.name}}</td>
+      <td class="position">{{display.position}}</td>
+      <td class="team">{{display.team}}</td>
+      <td><button type="button" name="button" class="btn btn-success draft" ng-click="draftPlayer(allWrs, myTeam, $index)">Draft</button></td>
+      <td><button type="button" name="button" class="btn btn-danger remove" ng-click="removePlayer(allWrs, $index)">Remove</button></td>
+    </tr>
+  </tbody>
+</table>

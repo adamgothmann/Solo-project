@@ -10,7 +10,7 @@
   margin-left: 50px;
 }
 #right {
-  width: 450px;
+  width: 425px;
   float: right;
   margin-right: 50px;
 }
@@ -35,7 +35,7 @@
   margin-left: 10px;
 }
 .remove{
-  margin-left: 10px;
+  margin-right: 5px;
 }
 .rows{
   padding-bottom: 10px;

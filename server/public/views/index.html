@@ -5,32 +5,29 @@
     <title>Solo project</title>
     <link rel="stylesheet" href="vendors/bootstrap.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="stylesheet.css" media="screen" title="no title" charset="utf-8">
-    <script src="/vendors/jquery.min.js" charset="utf-8"></script>
+    <script src="/vendors/jquery-2.2.3.min.js" charset="utf-8"></script>
     <script src="/vendors/jquery-ui.js" charset="utf-8"></script>
     <script src="/vendors/angular.js" charset="utf-8"></script>
     <script src="/vendors/angular-route.min.js" charset="utf-8"></script>
     <script src="/scripts/script.js" charset="utf-8"></script>
     <script src="/vendors/sortable.js" charset="utf-8"></script>
+    <script src="/vendors/bootstrap.min.js" charset="utf-8"></script>
   </head>
   <body>
     <div ng-controller='playerController'>
       <h1>PROJECT</h1>
+      <!-- partials -->
       <div id="leftTab" ng-include="'/views/partials/leftNav.html'"></div>
       <div id="rightTab" ng-include="'/views/partials/rightNav.html'"></div>
-      <div id="left" class="displays">
-        <table class="leftTable">
-          <tbody ui-sortable="sortableOptions" ng-model="leftArray">
-            <tr ng-repeat="display in leftArray track by $index" id="{{$index}}">
-              <td>{{$index + 1}}.</td>
-              <td>{{display.name}}</td>
-              <td class="position">{{display.position}}</td>
-              <td class="team">{{display.team}}</td>
-              <td><button type="button" name="button" class="btn btn-success draft" ng-click="draftPlayer(leftArray, $index)">Draft</button></td>
-              <td><button type="button" name="button" class="btn btn-danger remove" ng-click="removePlayer(leftArray, $index)">Remove</button></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+        <div id="left" class="tab-content displays" >
+          <div id="allLeft" class="tab-pane fade in active" ng-include="'/views/partials/all.html'"></div>
+          <div id="qbLeft" class="tab-pane fade" ng-include="'/views/partials/qbs.html'"></div>
+          <div id="rbLeft" class="tab-pane fade" ng-include="'/views/partials/rbs.html'"></div>
+          <div id="wrLeft" class="tab-pane fade" ng-include="'/views/partials/wrs.html'"></div>
+          <div id="teLeft" class="tab-pane fade" ng-include="'/views/partials/tes.html'"></div>
+          <div id="kLeft" class="tab-pane fade" ng-include="'/views/partials/kickers.html'"></div>
+          <div id="defLeft" class="tab-pane fade" ng-include="'/views/partials/defense.html'"></div>
+        </div>
 
       <div id="right" class="displays">
         <table>
@@ -55,8 +52,30 @@
           </tr>
         </table>
       </div>
-      <button type="button" name="button" id="import" ng-click="importPlayers(allPlayers)">Import rankings</button>
-      <button type="button" name="button" id="reset" ng-click="getPlayers()">Reset</button>
+      <button type="button" name="button" id="import" class="btn btn-info" ng-click="importPlayers(allPlayers)">Import rankings</button>
+      <button type="button" name="button" id="reset" class="btn btn-warning" ng-click="getPlayers()">Reset</button>
+      <!-- <button type="button" name="button" ng-click="getQbs()">get quarterbacks</button> -->
+
+      <!-- <div class="container">
+        <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" href="#allLeft">ALL</a></li>
+          <li><a data-toggle="tab" href="#qbLeft">QB</a></li>
+          <li><a data-toggle="tab" href="#rbLeft">RB</a></li>
+          <li><a data-toggle="tab" href="#wrLeft">WR</a></li>
+          <li><a data-toggle="tab" href="#teLeft">TE</a></li>
+          <li><a data-toggle="tab" href="#kLeft">K</a></li>
+          <li><a data-toggle="tab" href="#defLeft">DEF</a></li>
+        </ul>
+        <ul class="nav nav-tabs" id="leftTab">
+          <li class="active"><a data-tobble="tab" href="#allLeft">ALL</a></li>
+          <li><a data-tobble="tab" href="#qbLeft">QB</a></li>
+          <li><a data-tobble="tab" href="#rbLeft">RB</a></li>
+          <li><a data-tobble="tab" href="#wrLeft">WR</a></li>
+          <li><a data-tobble="tab" href="#teLeft">TE</a></li>
+          <li><a data-tobble="tab" href="#kLeft">K</a></li>
+          <li><a data-tobble="tab" href="#defLeft">DEF</a></li>
+        </ul>
+      </div> -->
     </div>
   </body>
 </html>
