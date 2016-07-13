@@ -6,16 +6,16 @@ myApp.controller('playerController', ['$scope', '$http', function($scope, $http)
   $scope.trash=[];
   $scope.counter = 0;
   $scope.getPlayers = function(){
-    console.log('in getPlayers');
     $http({
        method: 'GET',
        url: '/getPlayers'
      }).then( function( response ){
        $scope.allPlayers = response.data;
-       console.log("allPlayers from GET: ", $scope.allPlayers );
      });
      $scope.leftArray.splice(0, $scope.leftArray.length);
      $scope.myTeam.splice(0, $scope.myTeam.length);
+    //  $scope.allQbs.splice(0, $scope.allQbs.length);
+
   };//end getPlayers
 
   $scope.movePlayer = function(array, index){
@@ -27,20 +27,18 @@ myApp.controller('playerController', ['$scope', '$http', function($scope, $http)
   };//end movePlayer
 
   $scope.removePlayer = function(array, index){
-    // console.log("in removeplayer: ", $scope.leftArray);
-    $scope.trash.push(array.splice(index, 1).pop());
-    console.log("trash: ", $scope.trash);
-    console.log("trash name: ", $scope.trash[$scope.counter].name);
-    // $scope.counter++;
-    // console.log($scope.array);
-    // for (var i = 0; i < $scope.leftArray.length; i++) {
-    //   // if($scope.trash[$scope.counter].name === $scope.leftArray[index].name){
-    //   //   // $scope.leftArray.splice()
-    //   //   console.log('true');
-    //   // } else{
-    //   //   console.log('false');
-    //   // }
-    // }
+    var trash = array.splice(index, 1).pop();
+    console.log("trash: ", trash.name);
+    for (var i = 0; i < $scope.leftArray.length; i++) {
+      if($scope.leftArray[i].name === trash.name){
+        console.log("test", $scope.leftArray[i].name, trash.name);
+        var test = $scope.leftArray.map(function(e){
+          return e.name;
+        }).indexOf(trash.name);
+        console.log(test);
+        $scope.leftArray.splice(test, 1);
+      }
+    }
   };//end removePlayer
 
   $scope.draftPlayer = function(array1, array2, index){
@@ -69,13 +67,7 @@ myApp.controller('playerController', ['$scope', '$http', function($scope, $http)
       $scope.allQbs = response.data;
       console.log("from getQbs: ", $scope.allQbs );
     });
-    // for (var i = 0; i < $scope.leftArray.length; i++) {
-    //   if ($scope.allQbs.name === $scope.leftArray.name) {
-    //     console.log(true);
-    //   } else {
-    //     console.log(false);
-    //   }
-    // }
+
   };// end getQbs
 
   $scope.getRbs = function(){
@@ -84,7 +76,7 @@ myApp.controller('playerController', ['$scope', '$http', function($scope, $http)
       url: '/getRbs'
     }).then(function(response){
       $scope.allRbs = response.data;
-      console.log("fron getRbs: ", $scope.allRbs);
+      console.log("from getRbs: ", $scope.allRbs);
     });
   };//end getRbs
 
@@ -94,7 +86,7 @@ myApp.controller('playerController', ['$scope', '$http', function($scope, $http)
       url: '/getWrs'
     }).then(function(response){
       $scope.allWrs = response.data;
-      console.log("fron getWrs: ", $scope.allWrs);
+      console.log("from getWrs: ", $scope.allWrs);
     });
   };//end getWrs
 
@@ -104,7 +96,7 @@ myApp.controller('playerController', ['$scope', '$http', function($scope, $http)
       url: '/getTes'
     }).then(function(response){
       $scope.allTes = response.data;
-      console.log("fron getKs: ", $scope.allTes);
+      console.log("from getKs: ", $scope.allTes);
     });
   };//end getKs
 
@@ -114,7 +106,7 @@ myApp.controller('playerController', ['$scope', '$http', function($scope, $http)
       url: '/getKs'
     }).then(function(response){
       $scope.allKs = response.data;
-      console.log("fron allKs: ", $scope.allKs);
+      console.log("from allKs: ", $scope.allKs);
     });
   };//end getKs
 
@@ -124,7 +116,7 @@ myApp.controller('playerController', ['$scope', '$http', function($scope, $http)
       url: '/getDefs'
     }).then(function(response){
       $scope.allDefs = response.data;
-      console.log("fron getDefs: ", $scope.allDefs);
+      console.log("from getDefs: ", $scope.allDefs);
     });
   };//end getDefs
 
