@@ -1,6 +1,8 @@
-/*body{
-  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEOGFTBinuznlPOZsyg9K1qo2rM9f86t_b-t1wCdpGK-yTN34q");
-}*/
+body{
+background-image: url(../images/football_background.jpg);
+background-size: cover;
+background-repeat: no-repeat;
+}
 .displays{
   overflow: scroll;
   border: solid;
@@ -25,6 +27,7 @@
 #rightTab{
   float: right;
   margin-right: 55px;
+  visibility: hidden;
 }
 #leftTab{
   float: left;
@@ -75,4 +78,13 @@ h1{
 li{
   background-color: white;
   color: black;
+  border: outset;
+  border-radius: 5px;
+}
+li:active{
+  border: black;
+}
+
+.leftTableKickers, .leftTableAll, .leftTableDefense, .leftTableQbs, .leftTableRbs, .leftTableTes, .leftTableWrs{
+  width:100%;
 }
