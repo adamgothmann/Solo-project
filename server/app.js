@@ -15,7 +15,7 @@ app.listen(app.get("port"), function(){
 
 //retrieves players by ADP
 app.get('/getPlayers', function(req, res){
-  console.log('in getPlayers');
+  console.log("in getPlayers");
   var results = [];
   pg.connect(connectionString, function(err, client, done){
     // selects list items
@@ -31,7 +31,6 @@ app.get('/getPlayers', function(req, res){
 });//end getPlayers
 //retrieves quarterbacks by ADP
 app.get('/getQbs', function(req, res){
-  console.log('in getQbs');
   var results = [];
   pg.connect(connectionString, function(err, client, done){
     // selects list items
@@ -47,7 +46,6 @@ app.get('/getQbs', function(req, res){
 });//end getQbs
 //retrieves running backs by ADP
 app.get('/getRbs', function(req, res){
-  console.log('in getRbs');
   var results = [];
   pg.connect(connectionString, function(err, client, done){
     // selects list items
@@ -63,7 +61,6 @@ app.get('/getRbs', function(req, res){
 });//end getRbs
 
 app.get('/getWrs', function(req, res){
-  console.log('in getWrs');
   var results = [];
   pg.connect(connectionString, function(err, client, done){
     // selects list items
@@ -79,7 +76,6 @@ app.get('/getWrs', function(req, res){
 });//end getWrs
 
 app.get('/getTes', function(req, res){
-  console.log('in getTes');
   var results = [];
   pg.connect(connectionString, function(err, client, done){
     // selects list items
@@ -95,7 +91,6 @@ app.get('/getTes', function(req, res){
 });//end getTes
 
 app.get('/getKs', function(req, res){
-  console.log('in getKs');
   var results = [];
   pg.connect(connectionString, function(err, client, done){
     // selects list items
@@ -111,7 +106,6 @@ app.get('/getKs', function(req, res){
 });//end getKs
 
 app.get('/getDEFs', function(req, res){
-  console.log('in getDEFs');
   var results = [];
   pg.connect(connectionString, function(err, client, done){
     // selects list items

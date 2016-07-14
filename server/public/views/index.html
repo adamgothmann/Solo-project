@@ -15,6 +15,7 @@
   </head>
   <body>
     <div ng-controller='playerController'>
+
       <h1>PROJECT</h1>
       <!-- partials -->
       <div id="leftTab" ng-include="'/views/partials/leftNav.html'"></div>
@@ -29,14 +30,24 @@
           <div id="defLeft" class="tab-pane fade" ng-include="'/views/partials/defense.html'"></div>
         </div>
 
+        <!-- <div id="right" class="tab-content displays" >
+          <div id="allRight" class="tab-pane fade in active" ng-include="'/views/partials/all.html'"></div>
+          <div id="qbRight" class="tab-pane fade" ng-include="'/views/partials/qbs.html'"></div>
+          <div id="rbRight" class="tab-pane fade" ng-include="'/views/partials/rbs.html'"></div>
+          <div id="wrRight" class="tab-pane fade" ng-include="'/views/partials/wrs.html'"></div>
+          <div id="teRight" class="tab-pane fade" ng-include="'/views/partials/tes.html'"></div>
+          <div id="kRight" class="tab-pane fade" ng-include="'/views/partials/kickers.html'"></div>
+          <div id="defRight" class="tab-pane fade" ng-include="'/views/partials/defense.html'"></div>
+        </div> -->
+
       <div id="right" class="displays">
-        <table>
+        <table class="rightTable">
           <tr ng-repeat='show in allPlayers' id="{{$index}}" class="rows">
             <td>{{$index + 1}}.</td>
             <td>{{show.name}}</td>
             <td class="position">{{show.position}}</td>
             <td class="team">{{show.team}}</td>
-            <td class="rightButton"><button class="btn btn-primary" type="button" name="addButton" ng-click="movePlayer(allPlayers, $index)">Add</button></td>
+            <td class="addButton"><button class="btn btn-primary" type="button" name="addButton" ng-click="movePlayer(allPlayers, $index)">Add</button></td>
           </tr>
         </table>
       </div>
@@ -54,28 +65,6 @@
       </div>
       <button type="button" name="button" id="import" class="btn btn-info" ng-click="importPlayers(allPlayers)">Import rankings</button>
       <button type="button" name="button" id="reset" class="btn btn-warning" ng-click="getPlayers()">Reset</button>
-      <!-- <button type="button" name="button" ng-click="getQbs()">get quarterbacks</button> -->
-
-      <!-- <div class="container">
-        <ul class="nav nav-tabs">
-          <li class="active"><a data-toggle="tab" href="#allLeft">ALL</a></li>
-          <li><a data-toggle="tab" href="#qbLeft">QB</a></li>
-          <li><a data-toggle="tab" href="#rbLeft">RB</a></li>
-          <li><a data-toggle="tab" href="#wrLeft">WR</a></li>
-          <li><a data-toggle="tab" href="#teLeft">TE</a></li>
-          <li><a data-toggle="tab" href="#kLeft">K</a></li>
-          <li><a data-toggle="tab" href="#defLeft">DEF</a></li>
-        </ul>
-        <ul class="nav nav-tabs" id="leftTab">
-          <li class="active"><a data-tobble="tab" href="#allLeft">ALL</a></li>
-          <li><a data-tobble="tab" href="#qbLeft">QB</a></li>
-          <li><a data-tobble="tab" href="#rbLeft">RB</a></li>
-          <li><a data-tobble="tab" href="#wrLeft">WR</a></li>
-          <li><a data-tobble="tab" href="#teLeft">TE</a></li>
-          <li><a data-tobble="tab" href="#kLeft">K</a></li>
-          <li><a data-tobble="tab" href="#defLeft">DEF</a></li>
-        </ul>
-      </div> -->
     </div>
   </body>
 </html>
