@@ -22,7 +22,10 @@ body{
   float: right;
   margin-right: 50px;
 }
-#right table{
+/*#right table{
+  width: 100%;
+}*/
+.rightTable{
   width: 100%;
 }
 #rightTab{
@@ -70,8 +73,15 @@ h3{
   text-align: center;
   margin-top: -4px;
 }
+h2{
+  margin: -4px 0px -3px 20px;
+}
 h1{
+  font: 30px;
   text-align: center;
+  color: #404040;
+  margin-bottom: 30px;
+  text-shadow: 3px 3px 2px black;
 }
 .leftTable{
   table-layout: fixed;
@@ -82,7 +92,7 @@ h1{
 .leftTableKickers, .leftTableAll, .leftTableDefense, .leftTableQbs, .leftTableRbs, .leftTableTes, .leftTableWrs{
   width:100%;
 }
-li{
+.nav-tabs > li{
   border: outset;
   border-radius: 5px;
 }
@@ -103,4 +113,22 @@ li > a:active{
     border: medium none;
     border-radius: 5px;
     color: white;
+}
+.info {
+  border: outset;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  background-color: #d9d9d9;
+  opacity: 0.7;
+  border: inset gray;
+}
+.instruction{
+  font-size: 16px;
+}
+footer{
+  color: #d9d9d9;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 5px;
 }
