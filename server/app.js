@@ -15,7 +15,7 @@ app.listen(app.get("port"), function(){
 
 //retrieves players by ADP
 app.get('/getPlayers', function(req, res){
-  console.log('in getPlayers');
+  console.log("in getPlayers");
   var results = [];
   pg.connect(connectionString, function(err, client, done){
     // selects list items
@@ -29,6 +29,96 @@ app.get('/getPlayers', function(req, res){
     });
   });
 });//end getPlayers
+//retrieves quarterbacks by ADP
+app.get('/getQbs', function(req, res){
+  var results = [];
+  pg.connect(connectionString, function(err, client, done){
+    // selects list items
+    var item = client.query("SELECT name, position, team FROM players WHERE position = 'QB' ORDER BY adp");
+    var rows = 0;
+    item.on('row', function(row){
+      results.push(row);
+    });
+    item.on('end', function(){
+      return res.json(results);
+    });
+  });
+});//end getQbs
+//retrieves running backs by ADP
+app.get('/getRbs', function(req, res){
+  var results = [];
+  pg.connect(connectionString, function(err, client, done){
+    // selects list items
+    var item = client.query("SELECT name, position, team FROM players WHERE position = 'RB' ORDER BY adp");
+    var rows = 0;
+    item.on('row', function(row){
+      results.push(row);
+    });
+    item.on('end', function(){
+      return res.json(results);
+    });
+  });
+});//end getRbs
+
+app.get('/getWrs', function(req, res){
+  var results = [];
+  pg.connect(connectionString, function(err, client, done){
+    // selects list items
+    var item = client.query("SELECT name, position, team FROM players WHERE position = 'WR' ORDER BY adp");
+    var rows = 0;
+    item.on('row', function(row){
+      results.push(row);
+    });
+    item.on('end', function(){
+      return res.json(results);
+    });
+  });
+});//end getWrs
+
+app.get('/getTes', function(req, res){
+  var results = [];
+  pg.connect(connectionString, function(err, client, done){
+    // selects list items
+    var item = client.query("SELECT name, position, team FROM players WHERE position = 'TE' ORDER BY adp");
+    var rows = 0;
+    item.on('row', function(row){
+      results.push(row);
+    });
+    item.on('end', function(){
+      return res.json(results);
+    });
+  });
+});//end getTes
+
+app.get('/getKs', function(req, res){
+  var results = [];
+  pg.connect(connectionString, function(err, client, done){
+    // selects list items
+    var item = client.query("SELECT name, position, team FROM players WHERE position = 'K' ORDER BY adp");
+    var rows = 0;
+    item.on('row', function(row){
+      results.push(row);
+    });
+    item.on('end', function(){
+      return res.json(results);
+    });
+  });
+});//end getKs
+
+app.get('/getDEFs', function(req, res){
+  var results = [];
+  pg.connect(connectionString, function(err, client, done){
+    // selects list items
+    var item = client.query("SELECT name, position, team FROM players WHERE position = 'DEF' ORDER BY adp");
+    var rows = 0;
+    item.on('row', function(row){
+      results.push(row);
+    });
+    item.on('end', function(){
+      return res.json(results);
+    });
+  });
+});//end getDEFs
 
 //base url
 app.get("/*", function(req,res){

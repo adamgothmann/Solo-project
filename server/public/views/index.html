@@ -5,41 +5,50 @@
     <title>Solo project</title>
     <link rel="stylesheet" href="vendors/bootstrap.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="stylesheet.css" media="screen" title="no title" charset="utf-8">
-    <script src="/vendors/jquery.min.js" charset="utf-8"></script>
+    <script src="/vendors/jquery-2.2.3.min.js" charset="utf-8"></script>
     <script src="/vendors/jquery-ui.js" charset="utf-8"></script>
     <script src="/vendors/angular.js" charset="utf-8"></script>
     <script src="/vendors/angular-route.min.js" charset="utf-8"></script>
+    <script src="/vendors/angular-animate.js" charset="utf-8"></script>
     <script src="/scripts/script.js" charset="utf-8"></script>
     <script src="/vendors/sortable.js" charset="utf-8"></script>
+    <script src="/vendors/bootstrap.min.js" charset="utf-8"></script>
   </head>
   <body>
     <div ng-controller='playerController'>
-      <h1>PROJECT</h1>
-      <div id="leftTab" ng-include="'/views/partials/leftNav.html'"></div>
-      <div id="rightTab" ng-include="'/views/partials/rightNav.html'"></div>
-      <div id="left" class="displays">
-        <table class="leftTable">
-          <tbody ui-sortable="sortableOptions" ng-model="leftArray">
-            <tr ng-repeat="display in leftArray track by $index" id="{{$index}}">
-              <td>{{$index + 1}}.</td>
-              <td>{{display.name}}</td>
-              <td class="position">{{display.position}}</td>
-              <td class="team">{{display.team}}</td>
-              <td><button type="button" name="button" class="btn btn-success draft" ng-click="draftPlayer(leftArray, $index)">Draft</button></td>
-              <td><button type="button" name="button" class="btn btn-danger remove" ng-click="removePlayer(leftArray, $index)">Remove</button></td>
-            </tr>
-          </tbody>
-        </table>
+
+      <h1>FANTASY DRAFT TOOL</h1>
+      <div class="info">
+        <h2>Welcome!</h2>
+        <ul>
+          <li class="instruction">Click the <b>"Import rankings"</b> button if you would like to use the player rankings provided, or make your own rankings by clicking the <b>"Add"</b> button for each player.</li>
+          <li class="instruction">When it is your turn to draft, click the <b>"Draft"</b> button for the player you would like to draft to add them to your team.</li>
+          <li class="instruction">When a player has been drafted, click the <b>"Remove"</b> button to remove them from your rankings.</li>
+        </ul>
       </div>
 
-      <div id="right" class="displays">
-        <table>
-          <tr ng-repeat='show in allPlayers' id="{{$index}}" class="rows">
+      <!-- partials -->
+      <div id="leftTab" ng-include="'/views/partials/leftNav.html'"></div>
+      <div id="rightTab" ng-include="'/views/partials/rightNav.html'"></div>
+        <div id="left" class="tab-content displays">
+          <div id="allLeft" class="tab-pane fade in active" ng-include="'/views/partials/all.html'"></div>
+          <div id="qbLeft" class="tab-pane fade" ng-include="'/views/partials/qbs.html'"></div>
+          <div id="rbLeft" class="tab-pane fade" ng-include="'/views/partials/rbs.html'"></div>
+          <div id="wrLeft" class="tab-pane fade" ng-include="'/views/partials/wrs.html'"></div>
+          <div id="teLeft" class="tab-pane fade" ng-include="'/views/partials/tes.html'"></div>
+          <div id="kLeft" class="tab-pane fade" ng-include="'/views/partials/kickers.html'"></div>
+          <div id="defLeft" class="tab-pane fade" ng-include="'/views/partials/defense.html'"></div>
+        </div>
+
+
+      <div id="right" class="displays tab-content">
+        <table class="rightTable">
+          <tr ng-repeat='player in allPlayers' id="{{$index}}" class="rows">
             <td>{{$index + 1}}.</td>
-            <td>{{show.name}}</td>
-            <td class="position">{{show.position}}</td>
-            <td class="team">{{show.team}}</td>
-            <td class="rightButton"><button class="btn btn-primary" type="button" name="addButton" ng-click="movePlayer(allPlayers, $index)">Add</button></td>
+            <td>{{player.name}}</td>
+            <td class="position">{{player.position}}</td>
+            <td class="team">{{player.team}}</td>
+            <td class="addButton"><button class="btn btn-primary" type="button" name="addButton" ng-click="movePlayer(allPlayers, $index)">Add</button></td>
           </tr>
         </table>
       </div>
@@ -47,16 +56,17 @@
       <div id="bottom">
         <h3>My team</h3>
         <table>
-          <tr ng-repeat="something in myTeam track by $index" id="{{$index}}">
+          <tr class="middle" ng-repeat="player in myTeam track by $index" id="{{$index}}">
             <td>{{$index + 1}}.</td>
-            <td>{{something.position}}</td>
-            <td>{{something.name}}</td>
-            <td>{{something.team}}</td>
+            <td>{{player.position}}</td>
+            <td>{{player.name}}</td>
+            <td>{{player.team}}</td>
           </tr>
         </table>
       </div>
-      <button type="button" name="button" id="import" ng-click="importPlayers(allPlayers)">Import rankings</button>
-      <button type="button" name="button" id="reset" ng-click="getPlayers()">Reset</button>
+      <button type="button" name="button" id="import" class="btn btn-info" ng-click="importPlayers(allPlayers)">Import rankings</button>
+      <button type="button" name="button" id="reset" class="btn btn-warning" ng-click="getPlayers()">Reset</button>
     </div>
+    <footer>Rankings provided by the FantasyData API</footer>
   </body>
 </html>

@@ -1,28 +1,42 @@
+body{
+  background-image: url(../images/football_background.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 .displays{
   overflow: scroll;
   border: solid;
   height: 400px;
   border-radius: 10px;
+  background-color: #d9d9d9;
+  opacity: 0.9;
 }
 #left {
   width: 450px;
   float: left;
   margin-left: 50px;
+  background-color: #d9d9d9;
 }
 #right {
-  width: 450px;
+  width: 425px;
   float: right;
   margin-right: 50px;
+}
+.rightTable{
+  width: 100%;
 }
 #rightTab{
   float: right;
   margin-right: 55px;
+  visibility: hidden;
 }
 #leftTab{
   float: left;
   margin-left: 30px;
+  opacity: 0.8;
+  border-radius: 5px;
 }
-.rightButton{
+.addButton{
   padding-left: 50px;
 }
 .position{
@@ -35,10 +49,25 @@
   margin-left: 10px;
 }
 .remove{
-  margin-left: 10px;
+  margin-right: 5px;
 }
 .rows{
   padding-bottom: 10px;
+  border-style: inset;
+}
+.rows.ng-enter{
+  transition:0.5s linear all;
+  opacity:0;
+}
+.rows.ng-enter.ng-enter-active{
+  opacity:1;
+}
+.middle.ng-enter{
+  transition:0.5s linear all;
+  opacity:0;
+}
+.middle.ng-enter.ng-enter-active{
+  opacity:1;
 }
 td {
   padding-left: 10px;
@@ -48,18 +77,69 @@ td {
   border: solid;
   height: 300px;
   border-radius: 10px;
+  background-color: #d9d9d9;
+  opacity: 0.8;
 }
 h3{
   text-align: center;
   margin-top: -4px;
 }
+h2{
+  margin: -4px 0px -3px 20px;
+}
 h1{
+  font-size: 45px;
   text-align: center;
+  color: #404040;
+  margin-bottom: 30px;
+  text-shadow: 3px 3px 2px black;
 }
 .leftTable{
   table-layout: fixed;
 }
 #import{
   float: right;
-
+}
+.leftTableKickers, .leftTableAll, .leftTableDefense, .leftTableQbs, .leftTableRbs, .leftTableTes, .leftTableWrs{
+  width:100%;
+}
+.nav-tabs > li{
+  border: outset;
+  border-radius: 5px;
+}
+li > a:active{
+  border: black;
+}
+.nav-tabs{
+  background-color: #fff;
+}
+.tab-content{
+    padding:5px
+}
+.nav-tabs > li > a{
+  border: medium none;
+}
+.nav-tabs > li > a:hover{
+  background-color: #303136  !important;
+    border: medium none;
+    border-radius: 5px;
+    color: white;
+}
+.info {
+  border: outset;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  background-color: #d9d9d9;
+  opacity: 0.7;
+  border: inset gray;
+}
+.instruction{
+  font-size: 16px;
+}
+footer{
+  color: #d9d9d9;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 5px;
 }
