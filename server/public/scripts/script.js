@@ -1,4 +1,4 @@
-var myApp=angular.module( 'myApp', ['ui.sortable'] );
+var myApp=angular.module( 'myApp', ['ui.sortable', 'ngAnimate'] );
 
 myApp.controller('playerController', ['$scope', '$http', function($scope, $http){
   $scope.allPlayers = [];
@@ -80,7 +80,9 @@ myApp.controller('playerController', ['$scope', '$http', function($scope, $http)
   $scope.importPlayers = function(array){
     for(var i = 0; i<200; i++){
     $scope.leftArray.push(array.splice(0, 1).pop());
+
   }
+
   $scope.getQbs();//displays QB view
   $scope.getRbs();//displays RB view
   $scope.getWrs();//displays WR view
@@ -109,6 +111,9 @@ myApp.controller('playerController', ['$scope', '$http', function($scope, $http)
       $scope.allRbs = response.data;
       console.log("from getRbs: ", $scope.allRbs);
     });
+    // $scope.myObj = {
+    //   "color": "yellow"
+    // };
   };//end getRbs
 
   $scope.getWrs = function(){
@@ -159,66 +164,66 @@ myApp.controller('playerController', ['$scope', '$http', function($scope, $http)
       for (var i = 0; i < $scope.allQbs.length; i++) {
         if($scope.allQbs[i].name === removedPlayer.name){
           console.log("test removeFromViews: ", $scope.allQbs[i].name, removedPlayer.name);
-          var test1 = $scope.allQbs.map(function(e){
+          var getIndex1 = $scope.allQbs.map(function(e){
             return e.name;
           }).indexOf(removedPlayer.name);
-          console.log(test1);
-          $scope.allQbs.splice(test1, 1);
+          console.log(getIndex1);
+          $scope.allQbs.splice(getIndex1, 1);
         }
       }
     } if(removedPlayer.position === "RB"){
       for (var j = 0; j < $scope.allRbs.length; j++) {
         if($scope.allRbs[j].name === removedPlayer.name){
           console.log("test removeFromViews: ", $scope.allRbs[j].name, removedPlayer.name);
-          var test2 = $scope.allRbs.map(function(e){
+          var getIndex2 = $scope.allRbs.map(function(e){
             return e.name;
           }).indexOf(removedPlayer.name);
-          console.log(test2);
-          $scope.allRbs.splice(test2, 1);
+          console.log(getIndex2);
+          $scope.allRbs.splice(getIndex2, 1);
         }
       }
     } if(removedPlayer.position === "WR"){
       for (var k = 0; k < $scope.allWrs.length; k++) {
         if($scope.allWrs[k].name === removedPlayer.name){
           console.log("test removeFromViews: ", $scope.allWrs[k].name, removedPlayer.name);
-          var test3 = $scope.allWrs.map(function(e){
+          var getIndex3 = $scope.allWrs.map(function(e){
             return e.name;
           }).indexOf(removedPlayer.name);
-          console.log(test3);
-          $scope.allWrs.splice(test3, 1);
+          console.log(getIndex3);
+          $scope.allWrs.splice(getIndex3, 1);
         }
       }
     } if(removedPlayer.position === "TE"){
       for (var l = 0; l < $scope.allTes.length; l++) {
         if($scope.allTes[l].name === removedPlayer.name){
           console.log("test removeFromViews: ", $scope.allTes[l].name, removedPlayer.name);
-          var test4 = $scope.allTes.map(function(e){
+          var getIndex4 = $scope.allTes.map(function(e){
             return e.name;
           }).indexOf(removedPlayer.name);
-          console.log(test4);
-          $scope.allTes.splice(test4, 1);
+          console.log(getIndex4);
+          $scope.allTes.splice(getIndex4, 1);
         }
       }
     } if(removedPlayer.position === "K"){
       for (var m = 0; m < $scope.allKs.length; m++) {
         if($scope.allKs[m].name === removedPlayer.name){
           console.log("test removeFromViews: ", $scope.allKs[m].name, removedPlayer.name);
-          var test5 = $scope.allKs.map(function(e){
+          var getIndex5 = $scope.allKs.map(function(e){
             return e.name;
           }).indexOf(removedPlayer.name);
-          console.log(test5);
-          $scope.allKs.splice(test5, 1);
+          console.log(getIndex5);
+          $scope.allKs.splice(getIndex5, 1);
         }
       }
     } if(removedPlayer.position === "DEF"){
       for (var n = 0; n < $scope.allDefs.length; n++) {
         if($scope.allDefs[n].name === removedPlayer.name){
           console.log("test removeFromViews: ", $scope.allDefs[n].name, removedPlayer.name);
-          var test6 = $scope.allDefs.map(function(e){
+          var getIndex6 = $scope.allDefs.map(function(e){
             return e.name;
           }).indexOf(removedPlayer.name);
-          console.log(test6);
-          $scope.allDefs.splice(test6, 1);
+          console.log(getIndex6);
+          $scope.allDefs.splice(getIndex6, 1);
         }
       }
     }
@@ -233,66 +238,66 @@ myApp.controller('playerController', ['$scope', '$http', function($scope, $http)
       for (var i = 0; i < $scope.allQbs.length; i++) {
         if($scope.allQbs[i].name === draftedPlayer.name){
           console.log("test removeFromViews: ", $scope.allQbs[i].name, draftedPlayer.name);
-          var test1 = $scope.allQbs.map(function(e){
+          var getIndex1 = $scope.allQbs.map(function(e){
             return e.name;
           }).indexOf(draftedPlayer.name);
-          console.log(test1);
-          $scope.allQbs.splice(test1, 1);
+          console.log(getIndex1);
+          $scope.allQbs.splice(getIndex1, 1);
         }
       }
     } if(draftedPlayer.position === "RB"){
       for (var j = 0; j < $scope.allRbs.length; j++) {
         if($scope.allRbs[j].name === draftedPlayer.name){
           console.log("test removeFromViews: ", $scope.allRbs[j].name, draftedPlayer.name);
-          var test2 = $scope.allRbs.map(function(e){
+          var getIndex2 = $scope.allRbs.map(function(e){
             return e.name;
           }).indexOf(draftedPlayer.name);
-          console.log(test2);
-          $scope.allRbs.splice(test2, 1);
+          console.log(getIndex2);
+          $scope.allRbs.splice(getIndex2, 1);
         }
       }
     } if(draftedPlayer.position === "WR"){
       for (var k = 0; k < $scope.allWrs.length; k++) {
         if($scope.allWrs[k].name === draftedPlayer.name){
           console.log("test removeFromViews: ", $scope.allWrs[k].name, draftedPlayer.name);
-          var test3 = $scope.allWrs.map(function(e){
+          var getIndex3 = $scope.allWrs.map(function(e){
             return e.name;
           }).indexOf(draftedPlayer.name);
-          console.log(test3);
-          $scope.allWrs.splice(test3, 1);
+          console.log(getIndex3);
+          $scope.allWrs.splice(getIndex3, 1);
         }
       }
     } if(draftedPlayer.position === "TE"){
       for (var l = 0; l < $scope.allTes.length; l++) {
         if($scope.allTes[l].name === draftedPlayer.name){
           console.log("test removeFromViews: ", $scope.allTes[l].name, draftedPlayer.name);
-          var test4 = $scope.allTes.map(function(e){
+          var getIndex4 = $scope.allTes.map(function(e){
             return e.name;
           }).indexOf(draftedPlayer.name);
-          console.log(test4);
-          $scope.allTes.splice(test4, 1);
+          console.log(getIndex4);
+          $scope.allTes.splice(getIndex4, 1);
         }
       }
     } if(draftedPlayer.position === "K"){
       for (var m = 0; m < $scope.allKs.length; m++) {
         if($scope.allKs[m].name === draftedPlayer.name){
           console.log("test removeFromViews: ", $scope.allKs[m].name, draftedPlayer.name);
-          var test5 = $scope.allKs.map(function(e){
+          var getIndex5 = $scope.allKs.map(function(e){
             return e.name;
           }).indexOf(draftedPlayer.name);
-          console.log(test5);
-          $scope.allKs.splice(test5, 1);
+          console.log(getIndex5);
+          $scope.allKs.splice(getIndex5, 1);
         }
       }
     } if(draftedPlayer.position === "DEF"){
       for (var n = 0; n < $scope.allDefs.length; n++) {
         if($scope.allDefs[n].name === draftedPlayer.name){
           console.log("test removeFromViews: ", $scope.allDefs[n].name, draftedPlayer.name);
-          var test6 = $scope.allDefs.map(function(e){
+          var getIndex6 = $scope.allDefs.map(function(e){
             return e.name;
           }).indexOf(draftedPlayer.name);
-          console.log(test6);
-          $scope.allDefs.splice(test6, 1);
+          console.log(getIndex6);
+          $scope.allDefs.splice(getIndex6, 1);
         }
       }
     }

@@ -22,9 +22,6 @@ body{
   float: right;
   margin-right: 50px;
 }
-/*#right table{
-  width: 100%;
-}*/
 .rightTable{
   width: 100%;
 }
@@ -58,6 +55,20 @@ body{
   padding-bottom: 10px;
   border-style: inset;
 }
+.rows.ng-enter{
+  transition:0.5s linear all;
+  opacity:0;
+}
+.rows.ng-enter.ng-enter-active{
+  opacity:1;
+}
+.middle.ng-enter{
+  transition:0.5s linear all;
+  opacity:0;
+}
+.middle.ng-enter.ng-enter-active{
+  opacity:1;
+}
 td {
   padding-left: 10px;
 }
@@ -77,7 +88,7 @@ h2{
   margin: -4px 0px -3px 20px;
 }
 h1{
-  font: 30px;
+  font-size: 45px;
   text-align: center;
   color: #404040;
   margin-bottom: 30px;
