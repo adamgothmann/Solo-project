@@ -4,7 +4,8 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({extended: false});
 var pg = require('pg');
-var connectionString = 'postgres://localhost:5432/solo_project';
+// var connectionString = 'postgres://localhost:5432/solo_project';
+var connection = require('../modules/connection');
 
 app.set("port", (process.env.PORT || 8080));
 
@@ -17,7 +18,7 @@ app.listen(app.get("port"), function(){
 app.get('/getPlayers', function(req, res){
   console.log("in getPlayers");
   var results = [];
-  pg.connect(connectionString, function(err, client, done){
+  pg.connect(connection, function(err, client, done){
     // selects list items
     var item = client.query('SELECT * FROM players ORDER BY adp');
     var rows = 0;
@@ -32,7 +33,7 @@ app.get('/getPlayers', function(req, res){
 //retrieves quarterbacks by ADP
 app.get('/getQbs', function(req, res){
   var results = [];
-  pg.connect(connectionString, function(err, client, done){
+  pg.connect(connection, function(err, client, done){
     // selects list items
     var item = client.query("SELECT name, position, team FROM players WHERE position = 'QB' ORDER BY adp");
     var rows = 0;
@@ -47,7 +48,7 @@ app.get('/getQbs', function(req, res){
 //retrieves running backs by ADP
 app.get('/getRbs', function(req, res){
   var results = [];
-  pg.connect(connectionString, function(err, client, done){
+  pg.connect(connection, function(err, client, done){
     // selects list items
     var item = client.query("SELECT name, position, team FROM players WHERE position = 'RB' ORDER BY adp");
     var rows = 0;
@@ -62,7 +63,7 @@ app.get('/getRbs', function(req, res){
 
 app.get('/getWrs', function(req, res){
   var results = [];
-  pg.connect(connectionString, function(err, client, done){
+  pg.connect(connection, function(err, client, done){
     // selects list items
     var item = client.query("SELECT name, position, team FROM players WHERE position = 'WR' ORDER BY adp");
     var rows = 0;
@@ -77,7 +78,7 @@ app.get('/getWrs', function(req, res){
 
 app.get('/getTes', function(req, res){
   var results = [];
-  pg.connect(connectionString, function(err, client, done){
+  pg.connect(connection, function(err, client, done){
     // selects list items
     var item = client.query("SELECT name, position, team FROM players WHERE position = 'TE' ORDER BY adp");
     var rows = 0;
@@ -92,7 +93,7 @@ app.get('/getTes', function(req, res){
 
 app.get('/getKs', function(req, res){
   var results = [];
-  pg.connect(connectionString, function(err, client, done){
+  pg.connect(connection, function(err, client, done){
     // selects list items
     var item = client.query("SELECT name, position, team FROM players WHERE position = 'K' ORDER BY adp");
     var rows = 0;
@@ -107,7 +108,7 @@ app.get('/getKs', function(req, res){
 
 app.get('/getDEFs', function(req, res){
   var results = [];
-  pg.connect(connectionString, function(err, client, done){
+  pg.connect(connection, function(err, client, done){
     // selects list items
     var item = client.query("SELECT name, position, team FROM players WHERE position = 'DEF' ORDER BY adp");
     var rows = 0;
