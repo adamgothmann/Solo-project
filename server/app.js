@@ -26,7 +26,9 @@ app.get('/getPlayers', function(req, res){
       results.push(row);
     });
     item.on('end', function(){
-      return res.json(results);
+      // return res.json(results);
+      res.send(results);
+      done();
     });
   });
 });//end getPlayers
