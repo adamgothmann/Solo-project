@@ -78,83 +78,90 @@ myApp.controller('playerController', ['$scope', '$http', function($scope, $http)
   };//end draftPlayer
 
   $scope.importPlayers = function(array){
+    var testPlayer;
     for(var i = 0; i<200; i++){
-    $scope.leftArray.push(array.splice(0, 1).pop());
+    testPlayer = array.splice(0,1).pop();
+      if(testPlayer.position == 'QB'){
+        $scope.allQbs.push(testPlayer);
+      }
+    $scope.leftArray.push(testPlayer);
+    console.log($scope.leftArray);
+    console.log(testPlayer.position);
 
   }
 
-  $scope.getQbs();//displays QB view
-  $scope.getRbs();//displays RB view
-  $scope.getWrs();//displays WR view
-  $scope.getTes();//displays TE view
-  $scope.getKs();//displays K view
-  $scope.getDefs();//displays DEF view
+  // $scope.getQbs();//displays QB view
+  // $scope.getRbs();//displays RB view
+  // $scope.getWrs();//displays WR view
+  // $scope.getTes();//displays TE view
+  // $scope.getKs();//displays K view
+  // $scope.getDefs();//displays DEF view
     console.log("leftArray from importPlayers", $scope.leftArray);
   };//end importPlayers
 
-  $scope.getQbs = function(){
-    $http({
-      method: 'GET',
-      url: '/getQbs'
-    }).then( function( response ){
-      $scope.allQbs = response.data;
-      console.log("from getQbs: ", $scope.allQbs );
-    });
-
-  };// end getQbs
-
-  $scope.getRbs = function(){
-    $http({
-      method: 'GET',
-      url: '/getRbs'
-    }).then(function(response){
-      $scope.allRbs = response.data;
-      console.log("from getRbs: ", $scope.allRbs);
-    });
-    // $scope.myObj = {
-    //   "color": "yellow"
-    // };
-  };//end getRbs
-
-  $scope.getWrs = function(){
-    $http({
-      method: 'GET',
-      url: '/getWrs'
-    }).then(function(response){
-      $scope.allWrs = response.data;
-      console.log("from getWrs: ", $scope.allWrs);
-    });
-  };//end getWrs
-
-  $scope.getTes = function(){
-    $http({
-      method: 'GET',
-      url: '/getTes'
-    }).then(function(response){
-      $scope.allTes = response.data;
-      console.log("from getKs: ", $scope.allTes);
-    });
-  };//end getKs
-
-  $scope.getKs = function(){
-    $http({
-      method: 'GET',
-      url: '/getKs'
-    }).then(function(response){
-      $scope.allKs = response.data;
-      console.log("from allKs: ", $scope.allKs);
-    });
-  };//end getKs
-
-  $scope.getDefs = function(){
-    $http({
-      method: 'GET',
-      url: '/getDefs'
-    }).then(function(response){
-      $scope.allDefs = response.data;
-      console.log("from getDefs: ", $scope.allDefs);
-    });
-  };//end getDefs
+  // $scope.getQbs = function(){
+  //   $http({
+  //     method: 'GET',
+  //     url: '/getQbs'
+  //   }).then( function( response ){
+  //     $scope.allQbs = response.data;
+  //     console.log("from getQbs: ", $scope.allQbs );
+  //   });
+  //
+  // };// end getQbs
+  //
+  // $scope.getRbs = function(){
+  //   $http({
+  //     method: 'GET',
+  //     url: '/getRbs'
+  //   }).then(function(response){
+  //     $scope.allRbs = response.data;
+  //     console.log("from getRbs: ", $scope.allRbs);
+  //   });
+  //   // $scope.myObj = {
+  //   //   "color": "yellow"
+  //   // };
+  // };//end getRbs
+  //
+  // $scope.getWrs = function(){
+  //   $http({
+  //     method: 'GET',
+  //     url: '/getWrs'
+  //   }).then(function(response){
+  //     $scope.allWrs = response.data;
+  //     console.log("from getWrs: ", $scope.allWrs);
+  //   });
+  // };//end getWrs
+  //
+  // $scope.getTes = function(){
+  //   $http({
+  //     method: 'GET',
+  //     url: '/getTes'
+  //   }).then(function(response){
+  //     $scope.allTes = response.data;
+  //     console.log("from getKs: ", $scope.allTes);
+  //   });
+  // };//end getKs
+  //
+  // $scope.getKs = function(){
+  //   $http({
+  //     method: 'GET',
+  //     url: '/getKs'
+  //   }).then(function(response){
+  //     $scope.allKs = response.data;
+  //     console.log("from allKs: ", $scope.allKs);
+  //   });
+  // };//end getKs
+  //
+  // $scope.getDefs = function(){
+  //   $http({
+  //     method: 'GET',
+  //     url: '/getDefs'
+  //   }).then(function(response){
+  //     $scope.allDefs = response.data;
+  //     console.log("from getDefs: ", $scope.allDefs);
+  //   });
+  // };//end getDefs
 
   //removes players from each view when clicked
   $scope.removeFromViews = function(array1, index){
