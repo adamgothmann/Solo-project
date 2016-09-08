@@ -78,100 +78,45 @@ myApp.controller('playerController', ['$scope', '$http', function($scope, $http)
   };//end draftPlayer
 
   $scope.importPlayers = function(array){
-    var testPlayer;
+    var player;
     for(var i = 0; i<200; i++){
-    testPlayer = array.splice(0,1).pop();
-      if(testPlayer.position == 'QB'){
-        $scope.allQbs.push(testPlayer);
+      player = array.splice(0,1).pop();
+      switch (player.position) { //puts each player in tabs by position
+        case 'QB':
+          $scope.allQbs.push(player);
+          break;
+        case 'RB':
+          $scope.allRbs.push(player);
+          break;
+        case 'WR':
+          $scope.allWrs.push(player);
+          break;
+        case 'TE':
+          $scope.allTes.push(player);
+          break;
+        case 'K':
+          $scope.allKs.push(player);
+          break;
+        case 'DEF':
+          $scope.allDefs.push(player);
       }
-    $scope.leftArray.push(testPlayer);
-    console.log($scope.leftArray);
-    console.log(testPlayer.position);
-
-  }
-
-  // $scope.getQbs();//displays QB view
-  // $scope.getRbs();//displays RB view
-  // $scope.getWrs();//displays WR view
-  // $scope.getTes();//displays TE view
-  // $scope.getKs();//displays K view
-  // $scope.getDefs();//displays DEF view
+      $scope.leftArray.push(player);
+      console.log($scope.leftArray);
+      console.log(player.position);
+    }
     console.log("leftArray from importPlayers", $scope.leftArray);
   };//end importPlayers
-
-  // $scope.getQbs = function(){
-  //   $http({
-  //     method: 'GET',
-  //     url: '/getQbs'
-  //   }).then( function( response ){
-  //     $scope.allQbs = response.data;
-  //     console.log("from getQbs: ", $scope.allQbs );
-  //   });
-  //
-  // };// end getQbs
-  //
-  // $scope.getRbs = function(){
-  //   $http({
-  //     method: 'GET',
-  //     url: '/getRbs'
-  //   }).then(function(response){
-  //     $scope.allRbs = response.data;
-  //     console.log("from getRbs: ", $scope.allRbs);
-  //   });
-  //   // $scope.myObj = {
-  //   //   "color": "yellow"
-  //   // };
-  // };//end getRbs
-  //
-  // $scope.getWrs = function(){
-  //   $http({
-  //     method: 'GET',
-  //     url: '/getWrs'
-  //   }).then(function(response){
-  //     $scope.allWrs = response.data;
-  //     console.log("from getWrs: ", $scope.allWrs);
-  //   });
-  // };//end getWrs
-  //
-  // $scope.getTes = function(){
-  //   $http({
-  //     method: 'GET',
-  //     url: '/getTes'
-  //   }).then(function(response){
-  //     $scope.allTes = response.data;
-  //     console.log("from getKs: ", $scope.allTes);
-  //   });
-  // };//end getKs
-  //
-  // $scope.getKs = function(){
-  //   $http({
-  //     method: 'GET',
-  //     url: '/getKs'
-  //   }).then(function(response){
-  //     $scope.allKs = response.data;
-  //     console.log("from allKs: ", $scope.allKs);
-  //   });
-  // };//end getKs
-  //
-  // $scope.getDefs = function(){
-  //   $http({
-  //     method: 'GET',
-  //     url: '/getDefs'
-  //   }).then(function(response){
-  //     $scope.allDefs = response.data;
-  //     console.log("from getDefs: ", $scope.allDefs);
-  //   });
-  // };//end getDefs
 
   //removes players from each view when clicked
   $scope.removeFromViews = function(array1, index){
     var removedPlayer = array1.splice(index, 1).pop();
+    var getIndex;
     console.log("in removeFromViews: ", removedPlayer.name);
     if(removedPlayer.position === "QB"){
       for (var i = 0; i < $scope.allQbs.length; i++) {
         if($scope.allQbs[i].name === removedPlayer.name){
           console.log("test removeFromViews: ", $scope.allQbs[i].name, removedPlayer.name);
-          var getIndex1 = $scope.allQbs.map(function(e){
+          getIndex = $scope.allQbs.map(function(e){
             return e.name;
           }).indexOf(removedPlayer.name);
           console.log(getIndex1);
@@ -182,7 +127,7 @@ myApp.controller('playerController', ['$scope', '$http', function($scope, $http)
       for (var j = 0; j < $scope.allRbs.length; j++) {
         if($scope.allRbs[j].name === removedPlayer.name){
           console.log("test removeFromViews: ", $scope.allRbs[j].name, removedPlayer.name);
-          var getIndex2 = $scope.allRbs.map(function(e){
+          getIndex = $scope.allRbs.map(function(e){
             return e.name;
           }).indexOf(removedPlayer.name);
           console.log(getIndex2);
@@ -193,7 +138,7 @@ myApp.controller('playerController', ['$scope', '$http', function($scope, $http)
       for (var k = 0; k < $scope.allWrs.length; k++) {
         if($scope.allWrs[k].name === removedPlayer.name){
           console.log("test removeFromViews: ", $scope.allWrs[k].name, removedPlayer.name);
-          var getIndex3 = $scope.allWrs.map(function(e){
+          getIndex = $scope.allWrs.map(function(e){
             return e.name;
           }).indexOf(removedPlayer.name);
           console.log(getIndex3);
@@ -204,7 +149,7 @@ myApp.controller('playerController', ['$scope', '$http', function($scope, $http)
       for (var l = 0; l < $scope.allTes.length; l++) {
         if($scope.allTes[l].name === removedPlayer.name){
           console.log("test removeFromViews: ", $scope.allTes[l].name, removedPlayer.name);
-          var getIndex4 = $scope.allTes.map(function(e){
+          getIndex = $scope.allTes.map(function(e){
             return e.name;
           }).indexOf(removedPlayer.name);
           console.log(getIndex4);
@@ -215,7 +160,7 @@ myApp.controller('playerController', ['$scope', '$http', function($scope, $http)
       for (var m = 0; m < $scope.allKs.length; m++) {
         if($scope.allKs[m].name === removedPlayer.name){
           console.log("test removeFromViews: ", $scope.allKs[m].name, removedPlayer.name);
-          var getIndex5 = $scope.allKs.map(function(e){
+          getIndex = $scope.allKs.map(function(e){
             return e.name;
           }).indexOf(removedPlayer.name);
           console.log(getIndex5);
@@ -226,7 +171,7 @@ myApp.controller('playerController', ['$scope', '$http', function($scope, $http)
       for (var n = 0; n < $scope.allDefs.length; n++) {
         if($scope.allDefs[n].name === removedPlayer.name){
           console.log("test removeFromViews: ", $scope.allDefs[n].name, removedPlayer.name);
-          var getIndex6 = $scope.allDefs.map(function(e){
+          getIndex = $scope.allDefs.map(function(e){
             return e.name;
           }).indexOf(removedPlayer.name);
           console.log(getIndex6);
