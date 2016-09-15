@@ -51,19 +51,6 @@ myApp.controller('playerController', ['$scope', '$http', function($scope, $http)
         $scope.allDefs.push(movedPlayer);
         break;
     }
-    // if(movedPlayer.position === "QB"){//moves players to view by position
-    //   $scope.allQbs.push(movedPlayer);
-    // } if(movedPlayer.position === "RB"){
-    //   $scope.allRbs.push(movedPlayer);
-    // } if(movedPlayer.position === "WR"){
-    //   $scope.allWrs.push(movedPlayer);
-    // } if(movedPlayer.position === "TE"){
-    //   $scope.allTes.push(movedPlayer);
-    // } if(movedPlayer.position === "K"){
-    //   $scope.allKs.push(movedPlayer);
-    // } if(movedPlayer.position === "DEF"){
-    //   $scope.allDefs.push(movedPlayer);
-    // }
   };//end movePlayer
 
   $scope.removePlayer = function(array, index){
@@ -133,14 +120,14 @@ myApp.controller('playerController', ['$scope', '$http', function($scope, $http)
     var getIndex;
     console.log("in removeFromViews: ", removedPlayer.name);
     if(removedPlayer.position === "QB"){
+      console.log('wat');
       for (var i = 0; i < $scope.allQbs.length; i++) {
         if($scope.allQbs[i].name === removedPlayer.name){
           console.log("test removeFromViews: ", $scope.allQbs[i].name, removedPlayer.name);
           getIndex = $scope.allQbs.map(function(e){
             return e.name;
           }).indexOf(removedPlayer.name);
-          console.log(getIndex1);
-          $scope.allQbs.splice(getIndex1, 1);
+          $scope.allQbs.splice(getIndex, 1);
         }
       }
     } if(removedPlayer.position === "RB"){
@@ -150,8 +137,7 @@ myApp.controller('playerController', ['$scope', '$http', function($scope, $http)
           getIndex = $scope.allRbs.map(function(e){
             return e.name;
           }).indexOf(removedPlayer.name);
-          console.log(getIndex2);
-          $scope.allRbs.splice(getIndex2, 1);
+          $scope.allRbs.splice(getIndex, 1);
         }
       }
     } if(removedPlayer.position === "WR"){
@@ -161,8 +147,7 @@ myApp.controller('playerController', ['$scope', '$http', function($scope, $http)
           getIndex = $scope.allWrs.map(function(e){
             return e.name;
           }).indexOf(removedPlayer.name);
-          console.log(getIndex3);
-          $scope.allWrs.splice(getIndex3, 1);
+          $scope.allWrs.splice(getIndex, 1);
         }
       }
     } if(removedPlayer.position === "TE"){
@@ -172,8 +157,7 @@ myApp.controller('playerController', ['$scope', '$http', function($scope, $http)
           getIndex = $scope.allTes.map(function(e){
             return e.name;
           }).indexOf(removedPlayer.name);
-          console.log(getIndex4);
-          $scope.allTes.splice(getIndex4, 1);
+          $scope.allTes.splice(getIndex, 1);
         }
       }
     } if(removedPlayer.position === "K"){
@@ -183,8 +167,7 @@ myApp.controller('playerController', ['$scope', '$http', function($scope, $http)
           getIndex = $scope.allKs.map(function(e){
             return e.name;
           }).indexOf(removedPlayer.name);
-          console.log(getIndex5);
-          $scope.allKs.splice(getIndex5, 1);
+          $scope.allKs.splice(getIndex, 1);
         }
       }
     } if(removedPlayer.position === "DEF"){
@@ -194,8 +177,7 @@ myApp.controller('playerController', ['$scope', '$http', function($scope, $http)
           getIndex = $scope.allDefs.map(function(e){
             return e.name;
           }).indexOf(removedPlayer.name);
-          console.log(getIndex6);
-          $scope.allDefs.splice(getIndex6, 1);
+          $scope.allDefs.splice(getIndex, 1);
         }
       }
     }
