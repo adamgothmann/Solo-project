@@ -31,19 +31,39 @@ myApp.controller('playerController', ['$scope', '$http', function($scope, $http)
   $scope.movePlayer = function(array, index){
     var movedPlayer = array.splice(index, 1).pop();
     $scope.leftArray.push(movedPlayer);
-    if(movedPlayer.position === "QB"){//moves players to view by position
-      $scope.allQbs.push(movedPlayer);
-    } if(movedPlayer.position === "RB"){
-      $scope.allRbs.push(movedPlayer);
-    } if(movedPlayer.position === "WR"){
-      $scope.allWrs.push(movedPlayer);
-    } if(movedPlayer.position === "TE"){
-      $scope.allTes.push(movedPlayer);
-    } if(movedPlayer.position === "K"){
-      $scope.allKs.push(movedPlayer);
-    } if(movedPlayer.position === "DEF"){
-      $scope.allDefs.push(movedPlayer);
+    switch (movedPlayer.position){
+      case 'QB':
+        $scope.allQbs.push(movedPlayer);
+        break;
+      case 'RB':
+        $scope.allRbs.push(movedPlayer);
+        break;
+      case 'WR':
+        $scope.allWrs.push(movedPlayer);
+        break;
+      case 'TE':
+        $scope.allTes.push(movedPlayer);
+        break;
+      case 'K':
+        $scope.allKs.push(movedPlayer);
+        break;
+      case 'DEF':
+        $scope.allDefs.push(movedPlayer);
+        break;
     }
+    // if(movedPlayer.position === "QB"){//moves players to view by position
+    //   $scope.allQbs.push(movedPlayer);
+    // } if(movedPlayer.position === "RB"){
+    //   $scope.allRbs.push(movedPlayer);
+    // } if(movedPlayer.position === "WR"){
+    //   $scope.allWrs.push(movedPlayer);
+    // } if(movedPlayer.position === "TE"){
+    //   $scope.allTes.push(movedPlayer);
+    // } if(movedPlayer.position === "K"){
+    //   $scope.allKs.push(movedPlayer);
+    // } if(movedPlayer.position === "DEF"){
+    //   $scope.allDefs.push(movedPlayer);
+    // }
   };//end movePlayer
 
   $scope.removePlayer = function(array, index){
