@@ -189,73 +189,87 @@ myApp.controller('playerController', ['$scope', '$http', function($scope, $http)
     var draftedPlayer = array1.splice(index, 1).pop();
     array2.push(draftedPlayer);
     console.log("in removeFromViews: ", draftedPlayer.name);
-    if(draftedPlayer.position === "QB"){
-      for (var i = 0; i < $scope.allQbs.length; i++) {
-        if($scope.allQbs[i].name === draftedPlayer.name){
-          console.log("test removeFromViews: ", $scope.allQbs[i].name, draftedPlayer.name);
-           getIndex = $scope.allQbs.map(function(e){
-            return e.name;
-          }).indexOf(draftedPlayer.name);
-          console.log(getIndex);
-          $scope.allQbs.splice(getIndex, 1);
+    switch (draftedPlayer.position){
+      case 'QB':
+        for (var i = 0; i < $scope.allQbs.length; i++) {
+          if($scope.allQbs[i].name === draftedPlayer.name){
+            console.log("test removeFromViews: ", $scope.allQbs[i].name, draftedPlayer.name);
+             getIndex = $scope.allQbs.map(function(e){
+              return e.name;
+            }).indexOf(draftedPlayer.name);
+            console.log(getIndex);
+            $scope.allQbs.splice(getIndex, 1);
+          }
         }
-      }
-    } if(draftedPlayer.position === "RB"){
-      for (var j = 0; j < $scope.allRbs.length; j++) {
-        if($scope.allRbs[j].name === draftedPlayer.name){
-          console.log("test removeFromViews: ", $scope.allRbs[j].name, draftedPlayer.name);
-           getIndex = $scope.allRbs.map(function(e){
-            return e.name;
-          }).indexOf(draftedPlayer.name);
-          console.log(getIndex);
-          $scope.allRbs.splice(getIndex, 1);
+        break;
+      case 'RB':
+        for (var j = 0; j < $scope.allRbs.length; j++) {
+          if($scope.allRbs[j].name === draftedPlayer.name){
+            console.log("test removeFromViews: ", $scope.allRbs[j].name, draftedPlayer.name);
+             getIndex = $scope.allRbs.map(function(e){
+              return e.name;
+            }).indexOf(draftedPlayer.name);
+            console.log(getIndex);
+            $scope.allRbs.splice(getIndex, 1);
+          }
         }
-      }
-    } if(draftedPlayer.position === "WR"){
-      for (var k = 0; k < $scope.allWrs.length; k++) {
-        if($scope.allWrs[k].name === draftedPlayer.name){
-          console.log("test removeFromViews: ", $scope.allWrs[k].name, draftedPlayer.name);
-           getIndex = $scope.allWrs.map(function(e){
-            return e.name;
-          }).indexOf(draftedPlayer.name);
-          console.log(getIndex);
-          $scope.allWrs.splice(getIndex, 1);
+        break;
+      case 'WR':
+        for (var k = 0; k < $scope.allWrs.length; k++) {
+          if($scope.allWrs[k].name === draftedPlayer.name){
+            console.log("test removeFromViews: ", $scope.allWrs[k].name, draftedPlayer.name);
+             getIndex = $scope.allWrs.map(function(e){
+              return e.name;
+            }).indexOf(draftedPlayer.name);
+            console.log(getIndex);
+            $scope.allWrs.splice(getIndex, 1);
+          }
         }
-      }
-    } if(draftedPlayer.position === "TE"){
-      for (var l = 0; l < $scope.allTes.length; l++) {
-        if($scope.allTes[l].name === draftedPlayer.name){
-          console.log("test removeFromViews: ", $scope.allTes[l].name, draftedPlayer.name);
-           getIndex = $scope.allTes.map(function(e){
-            return e.name;
-          }).indexOf(draftedPlayer.name);
-          console.log(getIndex);
-          $scope.allTes.splice(getIndex, 1);
+        break;
+      case 'TE':
+        for (var l = 0; l < $scope.allTes.length; l++) {
+          if($scope.allTes[l].name === draftedPlayer.name){
+            console.log("test removeFromViews: ", $scope.allTes[l].name, draftedPlayer.name);
+             getIndex = $scope.allTes.map(function(e){
+              return e.name;
+            }).indexOf(draftedPlayer.name);
+            console.log(getIndex);
+            $scope.allTes.splice(getIndex, 1);
+          }
         }
-      }
-    } if(draftedPlayer.position === "K"){
-      for (var m = 0; m < $scope.allKs.length; m++) {
-        if($scope.allKs[m].name === draftedPlayer.name){
-          console.log("test removeFromViews: ", $scope.allKs[m].name, draftedPlayer.name);
-           getIndex = $scope.allKs.map(function(e){
-            return e.name;
-          }).indexOf(draftedPlayer.name);
-          console.log(getIndex);
-          $scope.allKs.splice(getIndex, 1);
+        break;
+      case 'K':
+        for (var m = 0; m < $scope.allKs.length; m++) {
+          if($scope.allKs[m].name === draftedPlayer.name){
+            console.log("test removeFromViews: ", $scope.allKs[m].name, draftedPlayer.name);
+             getIndex = $scope.allKs.map(function(e){
+              return e.name;
+            }).indexOf(draftedPlayer.name);
+            console.log(getIndex);
+            $scope.allKs.splice(getIndex, 1);
+          }
         }
-      }
-    } if(draftedPlayer.position === "DEF"){
-      for (var n = 0; n < $scope.allDefs.length; n++) {
-        if($scope.allDefs[n].name === draftedPlayer.name){
-          console.log("test removeFromViews: ", $scope.allDefs[n].name, draftedPlayer.name);
-           getIndex = $scope.allDefs.map(function(e){
-            return e.name;
-          }).indexOf(draftedPlayer.name);
-          console.log(getIndex);
-          $scope.allDefs.splice(getIndex, 1);
+        break;
+      case 'DEF':
+        for (var n = 0; n < $scope.allDefs.length; n++) {
+          if($scope.allDefs[n].name === draftedPlayer.name){
+            console.log("test removeFromViews: ", $scope.allDefs[n].name, draftedPlayer.name);
+             getIndex = $scope.allDefs.map(function(e){
+              return e.name;
+            }).indexOf(draftedPlayer.name);
+            console.log(getIndex);
+            $scope.allDefs.splice(getIndex, 1);
+          }
         }
-      }
+        break;
     }
+    // $scope.draftViews = function(array1, array2, index){
+    //   var draftedPlayer = array1.splice(index, 1).pop();
+    //   $scope.myTeam.push(draftedPlayer);
+    //   for (var s = 0; s < array2.length; s++){
+    //
+    //   }
+    // };
   };//end draftFromViews
   $scope.getPlayers();//displays players on page load
 }]);
