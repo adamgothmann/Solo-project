@@ -7,20 +7,19 @@ body{
   overflow: scroll;
   border: solid;
   height: 400px;
+  width: 450px;
   border-radius: 10px;
   background-color: #d9d9d9;
   opacity: 0.9;
+  display: inline-block;
 }
 #left {
-  width: 450px;
-  float: left;
   margin-left: 50px;
-  background-color: #d9d9d9;
+  /*display: inline-block;*/
 }
 #right {
-  width: 425px;
-  float: right;
   margin-right: 50px;
+  /*display: inline-block;*/
 }
 .rightTable{
   width: 100%;
@@ -29,12 +28,14 @@ body{
   float: right;
   margin-right: 55px;
   visibility: hidden;
+  /*display: inline-block;*/
 }
 #leftTab{
   float: left;
   margin-left: 30px;
   opacity: 0.8;
   border-radius: 5px;
+  /*display: inline-block;*/
 }
 .addButton{
   padding-left: 50px;
@@ -79,6 +80,9 @@ td {
   border-radius: 10px;
   background-color: #d9d9d9;
   opacity: 0.8;
+  width: 270px;
+  display: inline-block;
+  margin-bottom: 100px;
 }
 h3{
   text-align: center;
@@ -97,9 +101,14 @@ h1{
 .leftTable{
   table-layout: fixed;
 }
-#import{
-  float: right;
+.buttons {
+  position: absolute;
+  margin-top: 300px;
 }
+#import {
+  margin-left: 144px;
+}
+
 .leftTableKickers, .leftTableAll, .leftTableDefense, .leftTableQbs, .leftTableRbs, .leftTableTes, .leftTableWrs{
   width:100%;
 }

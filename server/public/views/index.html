@@ -40,6 +40,23 @@
           <div id="defLeft" class="tab-pane fade" ng-include="'/views/partials/defense.html'"></div>
         </div>
 
+        <button type="button" name="button" id="import" class="btn btn-info buttons" ng-click="importPlayers(allPlayers)">Import rankings</button>
+        <button type="button" name="button" id="reset" class="btn btn-warning buttons" ng-click="getPlayers()">Reset</button>
+
+        <div id="bottom">
+          <h3>My team</h3>
+          <table>
+            <tr class="middle" ng-repeat="player in myTeam track by $index" id="{{$index}}">
+              <td>{{$index + 1}}.</td>
+              <td>{{player.position}}</td>
+              <td>{{player.name}}</td>
+              <td>{{player.team}}</td>
+            </tr>
+          </table>
+        </div>
+
+
+
 
       <div id="right" class="displays tab-content">
         <table class="rightTable">
@@ -53,19 +70,8 @@
         </table>
       </div>
 
-      <div id="bottom">
-        <h3>My team</h3>
-        <table>
-          <tr class="middle" ng-repeat="player in myTeam track by $index" id="{{$index}}">
-            <td>{{$index + 1}}.</td>
-            <td>{{player.position}}</td>
-            <td>{{player.name}}</td>
-            <td>{{player.team}}</td>
-          </tr>
-        </table>
-      </div>
-      <button type="button" name="button" id="import" class="btn btn-info" ng-click="importPlayers(allPlayers)">Import rankings</button>
-      <button type="button" name="button" id="reset" class="btn btn-warning" ng-click="getPlayers()">Reset</button>
+
+
     </div>
     <footer>Rankings provided by the FantasyData API</footer>
   </body>
