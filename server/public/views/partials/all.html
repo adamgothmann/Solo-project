@@ -1,12 +1,12 @@
 <table class="leftTableAll">
-  <tbody ui-sortable="sortableOptions" ng-model="leftArray">
-    <tr class="rows" ng-repeat="player in leftArray track by $index" id="{{$index}}">
+  <tbody ui-sortable="sortableOptions" ng-model="rankings">
+    <tr class="rows" ng-repeat="player in rankings track by $index" id="{{$index}}">
       <td>{{$index + 1}}.</td>
       <td>{{player.name}}</td>
       <td class="position">{{player.position}}</td>
       <td class="team">{{player.team}}</td>
-      <td><button type="button" name="button" class="btn btn-success draft" ng-click="draftFromViews(leftArray, myTeam, $index)">Draft</button></td>
-      <td><button type="button" name="button" class="btn btn-danger remove" ng-click="removeFromViews(leftArray, $index)">Remove</button></td>
+      <td><button type="button" name="button" class="btn btn-success draft" ng-click="draftFromViews(rankings, myTeam, $index)">Draft</button></td>
+      <td><button type="button" name="button" class="btn btn-danger remove" ng-click="removeFromViews(rankings, $index)">Remove</button></td>
     </tr>
   </tbody>
 </table>

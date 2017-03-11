@@ -2,7 +2,7 @@ var myApp=angular.module( 'myApp', ['ui.sortable', 'ngAnimate'] );
 
 myApp.controller('playerController', ['$scope', '$http', function($scope, $http){
   $scope.allPlayers = [];
-  $scope.leftArray = [];
+  $scope.rankings = [];
   $scope.myTeam = [];
   $scope.allQbs = [];
   $scope.allRbs = [];
@@ -18,7 +18,7 @@ myApp.controller('playerController', ['$scope', '$http', function($scope, $http)
      }).then( function( response ){
        $scope.allPlayers = response.data;
      });
-     $scope.leftArray.length = 0;
+     $scope.rankings.length = 0;
      $scope.myTeam.length = 0;
      $scope.allQbs.length = 0;
      $scope.allRbs.length = 0;
@@ -30,7 +30,7 @@ myApp.controller('playerController', ['$scope', '$http', function($scope, $http)
 
   $scope.movePlayer = function(array, index){
     var movedPlayer = array.splice(index, 1).pop();
-    $scope.leftArray.push(movedPlayer);
+    $scope.rankings.push(movedPlayer);
     switch (movedPlayer.position){
       case 'QB':
         $scope.allQbs.push(movedPlayer);
@@ -56,14 +56,14 @@ myApp.controller('playerController', ['$scope', '$http', function($scope, $http)
   $scope.removePlayer = function(array, index){
     var removedPlayer = array.splice(index, 1).pop();
     console.log("removedPlayer: ", removedPlayer.name);
-    for (var i = 0; i < $scope.leftArray.length; i++) {
-      if($scope.leftArray[i].name === removedPlayer.name){
-        console.log("test", $scope.leftArray[i].name, removedPlayer.name);
-        var test = $scope.leftArray.map(function(e){
+    for (var i = 0; i < $scope.rankings.length; i++) {
+      if($scope.rankings[i].name === removedPlayer.name){
+        console.log("test", $scope.rankings[i].name, removedPlayer.name);
+        var test = $scope.rankings.map(function(e){
           return e.name;
         }).indexOf(removedPlayer.name);
         console.log(test);
-        $scope.leftArray.splice(test, 1);
+        $scope.rankings.splice(test, 1);
       }
     }
   };//end removePlayer
@@ -71,14 +71,14 @@ myApp.controller('playerController', ['$scope', '$http', function($scope, $http)
   $scope.draftPlayer = function(array1, array2, index){
     var draftedPlayer = array1.splice(index, 1).pop();
     console.log("draftedPlayer: ", draftedPlayer.name);
-    for (var i = 0; i < $scope.leftArray.length; i++) {
-      if($scope.leftArray[i].name === draftedPlayer.name){
-        console.log("test", $scope.leftArray[i].name, draftedPlayer.name);
-        var test = $scope.leftArray.map(function(e){
+    for (var i = 0; i < $scope.rankings.length; i++) {
+      if($scope.rankings[i].name === draftedPlayer.name){
+        console.log("test", $scope.rankings[i].name, draftedPlayer.name);
+        var test = $scope.rankings.map(function(e){
           return e.name;
         }).indexOf(draftedPlayer.name);
         console.log(test);
-        $scope.leftArray.splice(test, 1);
+        $scope.rankings.splice(test, 1);
       }
     }
     array2.push(draftedPlayer);
@@ -107,11 +107,11 @@ myApp.controller('playerController', ['$scope', '$http', function($scope, $http)
         case 'DEF':
           $scope.allDefs.push(player);
       }
-      $scope.leftArray.push(player);
-      console.log($scope.leftArray);
+      $scope.rankings.push(player);
+      console.log($scope.rankings);
       console.log(player.position);
     }
-    console.log("leftArray from importPlayers", $scope.leftArray);
+    console.log("rankings from importPlayers", $scope.leftArray);
   };//end importPlayers
 
   //removes players from each view when clicked
